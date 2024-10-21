@@ -23,8 +23,6 @@ class Post(Base):
     # Here we define columns for the table address.
     # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
-    caption = Column(String(3800))
-    image = Column(String(250)) #Url de la imagen del post
     user_id = Column(Integer, ForeignKey('users.id'))
     user = relationship(User)
     
@@ -55,6 +53,7 @@ class Media(Base):
     __tablename__ = 'medias'
     id = Column(Integer, primary_key=True)
     type = Column(Enum(MediaType), nullable=False)
+    url = Column(String(1200))
     post_id = Column(Integer, ForeignKey('posts.id'))
     user = relationship(User)
 
